@@ -1,6 +1,6 @@
 h1{
     text-align: center;
-    text-decoration-color: #781dee;
+    color:#fff;
     font-style: italic;
     font-weight: bold;
 }
@@ -32,8 +32,8 @@ body{
     width:40%;
     margin:0 auto;
     margin-top: 124px;
-    padding: 54px;
-    opacity: 0.8;
+    padding: 54px 12px;
+    opacity: 0.7;
     text-decoration-color: #2ab9a6;
     text-decoration: #781dee
 }
@@ -73,9 +73,12 @@ label{
         width:100vw;
         margin: 0;
     }
-    .login-form, #app{
+     #app{
         padding-top: 55px;
-        color: #0d47a1;
+        color:hsl(231, 80%, 51%);
+        font-style: inherit;
+        font-weight: 900;
+        text-shadow: #2ab9a6;
     }
     
 
