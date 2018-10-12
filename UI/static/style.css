@@ -1,0 +1,116 @@
+h1{
+    text-align: center;
+    color:#fff;
+    font-style: italic;
+    font-weight: bold;
+    
+}
+body{
+    background-image: url('img/login.jpg');
+    background-size: cover;
+    width: 100%;
+    filter:opacity(0.5);
+    filter: blur(0.3);
+    
+ }
+ .login-form{
+    padding: 21px;
+ }
+ .input input{
+     width:100%;
+     outline: none;
+     border:none;
+     padding: 8px;
+     background-color: rgb(168, 245, 26);
+     border-bottom: 1px solid #2ab9a6 ;
+     margin-bottom: 4px;
+     border-radius: 1em;
+ }
+
+ .login-box{
+    background: rgb(226, 140, 69) ;
+    color: #d5e6f1;
+    width:40%;
+    margin:0 auto;
+    margin-top: 124px;
+    padding: 54px 12px;
+    opacity: 0.7;
+    text-decoration-color: #2ab9a6;
+    text-decoration: #781dee
+}
+
+.input input:focus{
+    border-bottom: 1px solid #781dee;
+}
+
+label{
+    padding: 7px;
+    font-size: 1.2em;
+}
+.login-btn{
+    background: #e3f2fd;
+    border:none;
+    width:125px;
+    height:34px;
+    background: #0d47a1 ;
+    color:#e3f2fd;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.login-btn:hover{
+    transition-delay:  .5s;
+    background: rgb(241, 17, 17);
+    color:#0d47a1;
+}
+#login{
+    text-align: center;
+}
+
+/* Responsive properties*/
+@media(max-width:480px){
+    .login-box{
+        height:100vh;
+        padding: 0;
+        width:100vw;
+        margin: 0;
+    }
+     #app{
+        padding-top: 55px;
+        color:hsl(231, 80%, 51%);
+        font-style: inherit;
+        font-weight: 900;
+        text-shadow: #2ab9a6;
+    }
+    
+
+@media(max-width:680px){
+    .login-box{
+        height:100vh;
+        padding: 0;
+        width:100vw;
+        margin: 0;
+}
+
+.user{
+    background: rgb(226, 140, 69) ;
+    color: #d5e6f1;
+    width:40%;
+    margin:0 auto;
+    margin-top: 124px;
+    padding: 54px 12px;
+    opacity: 0.7;
+    text-decoration-color: #2ab9a6;
+    text-decoration: #781dee
+}
+
+
+.main-menu{
+    list-style: none;
+    padding: 0, 16px;
+    font-size: 24px;
+    display: inline-block;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+}
+ 
