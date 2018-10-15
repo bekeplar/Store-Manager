@@ -2,14 +2,14 @@
 Project Overview
 Store Manager is a web application that helps store owners manage sales and product inventory records. This application is meant for use in a single store..
 
-Required Features
+##Required Features
 -Store attendant can search and add products to buyer’s cart.
 -Store attendant can see his/her sale records but can’t modify them.
 -App should show available products, quantity and price.
 -Store owner can see sales and can filter by attendants.
 -Store owner can add, modify and delete products.
 
- Optional Features
+ ##Optional Features
 -Store owner can give admin rights to a store attendant.
 -Products should have categories.
 -Store attendants should be able to add products to specific categories.
@@ -17,13 +17,13 @@ Required Features
 
 
 
-Prerequisites
+##Prerequisites
 
 HTML5
 GIT
 CSS3
 JAVASCRIPT
 
-Author
+##Author
 Bekalaze Joseph
-Motivatiom: Bootcamp 13
+##Motivatiom: Bootcamp 13
