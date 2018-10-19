@@ -2,6 +2,8 @@
 Project Overview
 Store Manager is a web application that helps store owners manage sales and product inventory records. This application is meant for use in a single store..
 
+[![Coverage Status](https://coveralls.io/repos/github/bekeplar/Store-Manager/badge.svg?branch=gh-pages)](https://coveralls.io/github/bekeplar/Store-Manager?branch=gh-pages)
+
 ## Required Features
 -Store attendant can search and add products to buyer’s cart.
 -Store attendant can see his/her sale records but can’t modify them.
