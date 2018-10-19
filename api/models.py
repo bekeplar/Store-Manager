@@ -15,7 +15,7 @@ class User:
         self.is_admin = is_admin
 
 
-class Product:
+class Products:
     """This class defines the products sold by the store"""
     Product_id = 0
 

@@ -24,3 +24,13 @@ def get_a_specific_product(id):
     This function gets a specific item by its id.
     '''
     return jsonify({'product': get_a_specific_product(id)}), 200
+
+
+@sm.route('/api/v1/products', methods=['GET'])
+def get_all_products():
+    '''
+    This function returns a list of all products in the store.
+    '''
+    return jsonify({
+        'products': products.get_all_products()}), 200
+
