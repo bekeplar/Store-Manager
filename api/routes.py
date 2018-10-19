@@ -34,3 +34,10 @@ def get_all_products():
     return jsonify({
         'products': products.get_all_products()}), 200
 
+
+@sm.route('/api/v1/admin/sales', methods=['GET'])
+def get_all_sales():
+    '''
+     Function to enable an admin get all sales records.
+    '''
+    return jsonify({'sales': sales.get_all_sales}), 200
