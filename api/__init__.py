@@ -1,7 +1,7 @@
 from flask import Flask
 
 """
-Create a Flask application named sm. 
+Create a Flask application named sm.
 sm  will be my flask instianted variable.
 """
 
