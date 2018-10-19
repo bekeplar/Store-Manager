@@ -41,3 +41,29 @@ def get_all_sales():
      Function to enable an admin get all sales records.
     '''
     return jsonify({'sales': sales.get_all_sales}), 200
+
+
+@sm.route('/api/v1/attendant/sales', methods=['POST'])
+def add_sale():
+    '''
+    This function enables a store attendant to add sale
+    order to the list of orders.
+    '''
+    parsejson = request.get_json()
+    product_name = parsejson['product_name']
+    product_category = parsejson['product_category']
+    quantity = parsejson['quantity']
+    product_price = parsejson['product_price']
+    date_added = parsejson['date_added']
+    product_id = parsejson['product_id']
+    Attendant_name = parsejson['attendant_name']
+    sales.add_sale(
+        product_name,
+        product_category,
+        product_id,
+        quantity,
+        product_price,
+        date_added,
+        Attendant_name
+            )
+    return jsonify({'message': 'sale successfully added '}), 200
