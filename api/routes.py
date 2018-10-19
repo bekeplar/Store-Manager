@@ -16,3 +16,11 @@ def add_product():
         product_quantity
          )
     return jsonify({'message': 'Product has been added'}), 201
+
+
+@sm.route('/api/v1/products/product_id', methods=['GET'])
+def get_a_specific_product(id):
+    '''
+    This function gets a specific item by its id.
+    '''
+    return jsonify({'product': get_a_specific_product(id)}), 200
