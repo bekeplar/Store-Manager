@@ -1,18 +1,13 @@
 language: python
 python:
   - "3.6"
-
-env:
-  global:
-    - APP_SETTINGS=testing
-    - CODECOV_TOKEN="E3kycqxPxyAPAPcs92nueuAWnNLB1dwfs"
-
 install:
-  - "pip install -r requirements.txt"
-
-script:
-    - python -m pytest --cov=app tests/
-    - coverage report
-
+  - pip install -r requirements.txt
+  - pip install python-coveralls
+  - pip install coverage
+  
+virtualenv:
+script: 
+  - nosetests --with-coverage
 after_success:
-    - coveralls
+- coveralls
