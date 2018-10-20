@@ -2,7 +2,10 @@ language: python
 python:
   - "3.7"
 
-
+env:
+  global:
+    - APP_SETTINGS=testing
+    - CODECOV_TOKEN="E3kycqxPxyAPAPcs92nueuAWnNLB1dwfs"
 
 install:
   - "pip install -r requirements.txt"
