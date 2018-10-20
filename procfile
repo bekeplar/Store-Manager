@@ -1,1 +1,2 @@
-web : gunicorn sm:sm
+web : gunicorn
+run: sm
