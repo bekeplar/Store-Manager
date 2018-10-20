@@ -1,5 +1,5 @@
 from flask import jsonify, request,  url_for
-from api import sm, models
+from api import sm, models, validators
 
 
 @sm.route('/api/v1/admin/product', methods=['POST'])

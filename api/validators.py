@@ -1,7 +1,7 @@
 import re
 
 
-class Validation:
+class Validators:
     """validates product and return appropriate message"""
 
     def product_validation(
