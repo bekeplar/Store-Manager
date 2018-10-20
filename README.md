@@ -6,7 +6,7 @@ Store Manager is a web application that helps store owners manage sales and prod
 
 ## Required Features:
 
-##UI
+UI
 
 -Store attendant can search and add products to buyer’s cart.
 
@@ -18,7 +18,7 @@ Store Manager is a web application that helps store owners manage sales and prod
 
 -Store owner can add, modify and delete products.
 
-##Api
+##Api:
 
 -Admin can add a product
 
