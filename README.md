@@ -1,6 +1,6 @@
 ## store-manager
 
-##Project Overview
+Project Overview
 
 Store Manager is a web application that helps store owners manage sales and product inventory records. This application is meant for use in a single store..
 
@@ -24,7 +24,7 @@ UI
 
 -Store owner can add, modify and delete products.
 
-##Api:
+Api:
 
 -Admin can add a product
 
