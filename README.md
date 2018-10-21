@@ -7,6 +7,8 @@ Store Manager is a web application that helps store owners manage sales and prod
 
 [![Coverage Status](https://coveralls.io/repos/github/bekeplar/Store-Manager/badge.svg)](https://coveralls.io/github/bekeplar/Store-Manager)
 https://travis-ci.org/bekeplar/Store-Manager.svg?branch=Attendant-add-sale-record
+[![Maintainability](https://api.codeclimate.com/v1/badges/2adc34ed8ac59bdd6f4c/maintainability)](https://codeclimate.com/github/bekeplar/Store-Manager/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2adc34ed8ac59bdd6f4c/test_coverage)](https://codeclimate.com/github/bekeplar/Store-Manager/test_coverage)
 
 
 ## Required Features:
