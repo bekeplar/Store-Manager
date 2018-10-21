@@ -1,13 +1,20 @@
 language: python
 python:
-  - "3.6"
+  - '3.6'
+
+env:
+  global:
+    - APP_ENV=testing
+    -SECRET_KEY='my_secret'
+
+#  command to install dependences
 install:
-  - pip install -r requirements.txt
-  - pip install python-coveralls
-  - pip install coverage
-  
-virtualenv:
-script: 
-  - nosetests --with-coverage
+  - 'pip install -r requirements.txt'
+
+#  command to run tests
+script:
+  - py.test --cov=api/tests/
+
 after_success:
-- coveralls
+  - coveralls
+  - codecov
