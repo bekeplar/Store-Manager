@@ -1,5 +1,8 @@
 from flask import jsonify, request,  url_for
-from api import sm, models, validators
+from . import sm, models, validators
+
+products = []
+Sales = []
 
 
 @sm.route('/api/v1/admin/product', methods=['POST'])
@@ -9,7 +12,7 @@ def add_product():
     product_id = parsejson['product_id']
     product_price = parsejson['product_price']
     product_quantity = parsejson['product_quantity']
-    products.add_product(
+    products.append(
         product_name,
         product_id,
         product_price,
@@ -40,7 +43,7 @@ def get_all_sales():
     '''
      Function to enable an admin get all sales records.
     '''
-    return jsonify({'sales': sales.get_all_sales}), 200
+    return jsonify({'sales': Sales.get_all_sales}), 200
 
 
 @sm.route('/api/v1/attendant/sales', methods=['POST'])
@@ -57,7 +60,7 @@ def add_sale():
     date_added = parsejson['date_added']
     product_id = parsejson['product_id']
     Attendant_name = parsejson['attendant_name']
-    sales.add_sale(
+    Sales.append(
         product_name,
         product_category,
         product_id,

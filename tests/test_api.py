@@ -1,20 +1,20 @@
 import pytest
 from datetime import datetime
 from flask import Response, json
-from api import sm, routes, models, status
+from api import sm, routes, models
 
 
 def test_index():
     user = sm.test_user()
     res = user.get('/')
-    assert res.status_code == status.HTTP_200_OK
+    assert res.status_code == 200
 
 
 def test_add_product():
     admin = sm.test_admin()
     res = admin.post('/api/v1/admin/product', json={
         'product_name': 'Boots',
-        'product_price': '50k UGX', 
+        'product_price': '50k UGX',
         'product_quantity': '12',
         'product_id': '1'
         })
@@ -24,7 +24,7 @@ def test_add_product():
 def test_get_a_specific_product():
     admin = sm.test_admin()
     res = admin.get('/api/v1/products/product_id')
-    assert res.status_code == status.HTTP_200_OK
+    assert res.status_code == 200
 
 
 def test_add_sale():
@@ -36,16 +36,16 @@ def test_add_sale():
         'customer_name': 'bekeplar',
         'sale_id': '1'
     })
-    assert res.status_code == status.HTTP_201_CREATED
+    assert res.status_code == 201
 
 
-def get_all_products():
+def test_get_all_products():
     user = sm.test_user()
     res = user.get('/api/v1/products')
-    assert res.status_code == status.HTTP_200_OK
+    assert res.status_code == 200
 
 
 def test_get_all_sales():
     admin = sm.test_admin()
     res = admin.get('/api/v1/admin/sales')
-    assert res.status_code == status.HTTP_200_OK
+    assert res.status_code == 200
