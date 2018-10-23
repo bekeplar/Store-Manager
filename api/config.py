@@ -16,11 +16,6 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = True
 
 
-class StagingConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-
-
 class TestingConfig(BaseConfig):
     """ enables testing environment """
     TESTING = True
