@@ -7,4 +7,4 @@ class BaseTestCase(unittest.TestCase):
         """
         This method executes before each test run
         """
-        self.app = sm.test_client(self)
+        self.api = sm.test_client(self)

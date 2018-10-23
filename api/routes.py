@@ -1,7 +1,7 @@
 from flask import jsonify, json, request,  url_for
-from . import sm
+from api import sm
 from flask import request, jsonify
-from .models.Products import Products
+from .models.products import Products
 from .models.sales import Sales
 from api.validators import Validators
 
@@ -27,7 +27,7 @@ def add_product():
         product_quantity
          )
     return jsonify({'message': 'Product has been added'}), 201
-    
+
 
 @sm.route('/api/v1/products/product_id', methods=['GET'])
 def get_a_specific_product(id):

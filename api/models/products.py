@@ -42,6 +42,6 @@ class Products:
                 if product['product_id'] == product_id:
                     self.products.remove(product)
                     return jsonify({'msg': 'Product deleted.'})
-juice = Products('lemon', '2000', '100')    
+juice = Products('lemon', '2000', '100')
 juice.add_product()
 print(juice.products)
