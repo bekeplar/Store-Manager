@@ -8,7 +8,6 @@ class BaseConfig:
        variables for the app. """
     DEBUG = False
     TESTING = False
-    SECRET_KEY = 'my_secret'
 
 
 class DevelopmentConfig(BaseConfig):

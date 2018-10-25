@@ -1,4 +1,5 @@
 from api import sm
+from api import views
 
 
 """ run the application """
