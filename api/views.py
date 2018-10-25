@@ -39,6 +39,7 @@ def home():
     """
 
 
+
 @sm.route('/api/v1/products', methods=['POST'])
 def add_product():
     data = json.loads(request.data)
