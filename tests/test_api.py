@@ -4,33 +4,7 @@ from api import sm
 from api import views
 from api.models.products import Products
 from api.models.sales import Sales
-
-
 import json
-
-product = {
-    "product_name": "Boots",
-    "product_price": "80000UGX",
-    "product_quantity": 4
-}
-
-Invalid_input = {
-    "product_name": "Boots",
-    "product_price": "80000UGX",
-    "product_quantity": 'zzz'
-}
-
-Missing_name = {
-    "product_name": "",
-    "product_price": "80000UGX",
-    "product_quantity": 22
-}
-
-No_quantity = {
-    "product_name": "Boots",
-    "product_price": "80000UGX",
-    "product_quantity": ""
-}
 
 
 class BaseTestCase(unittest.TestCase):
@@ -82,7 +56,7 @@ class SalesTestCase(TestCase):
             "product_quantity": 6,
         }
 
-        result = self.testclient.post('/api/v2/resources/order/',
+        result = self.testclient.post('/api/v1/sales',
                                   content_type='application/json',
                                   data=json.dumps(sale)
                                   )

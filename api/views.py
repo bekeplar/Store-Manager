@@ -67,6 +67,18 @@ def get_all_products():
     """
 
 
+@sm.route('/api/v1/admin/products/<int:product_id>', methods=['DELETE'])
+def delete_aproduct(product_id):
+    product = [product for product in Prod if product["product_id"] == id]
+
+    if len(product) == 0:
+        abort(404)
+
+    product.remove(product[0])
+
+    return jsonify({"product_removed": f"{product[0]['product_name']} removed from store"}), 200
+
+
 @sm.route('/api/v1/sales', methods=['POST'])
 def add_sale():
     '''
@@ -87,15 +99,15 @@ def add_sale():
     return jsonify({'msg': 'business progressing'}), 201
 
 
-@sm.route('/api/v1/products/<product_id>', methods=['GET'])
+@sm.route('/api/v1/products/id', methods=['GET'])
 def get_a_specific_product(id):
     '''
     This function gets a specific item by its id.
     '''
-    if len(Products) == 0:
+    if len(Prod) == 0:
             return jsonify({'error': 'The store is short of stock'}), 404 
-    for product_item in Prod:
-        if product_item['product_id'] == id:
+    for product in Prod:
+        if product['product_id'] == id:
             return jsonify({'result': Prod}), 200
     return jsonify({'error': 'Product not in stock'}), 404
 
