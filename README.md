@@ -1,8 +1,8 @@
-## store-manager
+## store-manager API
 
 Project Overview
 
-Store Manager is a web application that helps store owners manage sales and product inventory records. This application is meant for use in a single store..
+Store Manager is a web application that helps store owners manage sales and product inventory records. This application is meant for use in a single store..it is used by both an attendant and the store Admin.
 
 
 [![Coverage Status](https://coveralls.io/repos/github/bekeplar/Store-Manager/badge.svg)](https://coveralls.io/github/bekeplar/Store-Manager)
@@ -50,19 +50,40 @@ Api:
 
 ## Prerequisites
 
-HTML5
 
 GIT
-
-CSS3
-
-JAVASCRIPT
-
 PYTHON/FLASK
+POSTMAN
+HEROKU
+CONTINOUS INTERGRATION
+
+## INSTALLATION
+my app can be accessed by the following proceedures either on Mac or windows
+
+Open the terminal for on MAC or Linux and CMD for windows respectively
+
+Navigate to the root folder of the application
+
+Install Virtual environment and create them with the commands
+
+pip install virtualenv
+
+virtualenv venv
+
+Activate virtual environment
+
+.\venv\Scripts\activate for windows and source ./venv/Scripts/activate for Linux and MAC
+
+run the command pip install -r requirements.txt to install the required packages in the Virtual environment
+
+Then run the application with python run.py
 
 ## Author
 
 Bekalaze Joseph
 
 ## Motivatiom: Bootcamp 13
+
+It has been a great experience for me and my fellows who have been always there for me
+answering my questions and inquiries where needed.
 

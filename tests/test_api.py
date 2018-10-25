@@ -48,7 +48,6 @@ class SalesTestCase(TestCase):
     def setUp(self):
         self.testclient = sm.test_client()
 
-   
     def tearDown(self):
         self.testclient = sm.test_client()
         """

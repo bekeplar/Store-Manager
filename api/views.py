@@ -17,7 +17,7 @@ def register_user():
     return jsonify({"Welcome": "Please contact admin"})
 
 
-@sm.route('/login', methods=['POST'])
+@sm.route('/login', methods=['GET'])
 def user_login():
     data = request.json
 
@@ -30,7 +30,7 @@ def user_login():
         return jsonify({"Success": "User Logged in successfuly"}), 200
 
 
-@sm.route('/', methods=['GET'])
+@sm.route('/index', methods=['GET'])
 def home():
     return jsonify({"Welcome": "Welcome to my Store"})
 
@@ -47,36 +47,11 @@ def add_product():
     product_quantity = data['product_quantity']
     if not request.content_type == 'application/json':
         return jsonify({'error': 'unsupported content-type'}), 400
-    if ("" in product_name) == True:
+    if ("" in product_name):
             return jsonify({'error': 'enter product name'})
     product = Products(product_name, product_price, product_quantity)
     Prod.append(product.add_product())
     return jsonify({'msge': 'success'}), 201
-
-
-@sm.route('/api/v1/products', methods=['GET'])
-def get_all_products():
-    '''
-    This function returns a list of all products in the store.
-    '''
-    if len(Prod) == 0:
-        return jsonify({'error': 'Store is out of stock'}), 404
-    return jsonify({'Stock Available': Prod}), 200
-    """
-    Endpoint for adding a sale to the store/Attendant.
-    """
-
-
-@sm.route('/api/v1/admin/products/<int:product_id>', methods=['DELETE'])
-def delete_aproduct(product_id):
-    product = [product for product in Prod if product["product_id"] == id]
-
-    if len(product) == 0:
-        abort(404)
-
-    product.remove(product[0])
-
-    return jsonify({"product_removed": f"{product[0]['product_name']} removed from store"}), 200
 
 
 @sm.route('/api/v1/sales', methods=['POST'])
@@ -90,7 +65,7 @@ def add_sale():
     customer_name = data['customer_name']
     product_price = data['product_price']
     product_quantity = data['product_quantity']
-    if not request.content_type == 'application/json': 
+    if not request.content_type == 'application/json':
         return jsonify({'error': 'Wrong content-type'}), 400
     if len(Sale) == 0:
         return jsonify({'error': 'No sales made yet'}), 404
@@ -99,20 +74,58 @@ def add_sale():
     return jsonify({'msg': 'business progressing'}), 201
 
 
-@sm.route('/api/v1/products/id', methods=['GET'])
-def get_a_specific_product(id):
+@sm.route('/api/v1/products', methods=['GET'])
+def get_products():
+    '''
+    This function returns a list of all products in the store.
+    '''
+    if len(Prod) == 0:
+        return jsonify({'error': 'Store is out of stock'}), 404
+    return jsonify({'Stock Available': Prod}), 200
+
+    """
+    Endpoint for adding a sale to the store/Attendant.
+    """
+
+
+@sm.route('/api/v1/products/', methods=['DELETE'])
+def delete_product():
+    if len(Prod) == 0:
+        abort(404)
+    else:
+        Prod.remove(Prod[0])
+
+    return jsonify({"product_removed":
+                 f"{Prod[0]['product_name']} removed from store"}), 200
+
+
+@sm.route('/api/v1/products/<product_id>', methods=['GET'])
+def get_a_specific_product(product_id):
     '''
     This function gets a specific item by its id.
     '''
     if len(Prod) == 0:
-            return jsonify({'error': 'The store is short of stock'}), 404 
+            return jsonify({'error': 'The store is short of stock'}), 404
     for product in Prod:
         if product['product_id'] == id:
             return jsonify({'result': Prod}), 200
     return jsonify({'error': 'Product not in stock'}), 404
 
 
-@sm.route('/api/v1/sales', methods=['GET'])
+@sm.route('/api/v1/sales/<sale_id>', methods=['GET'])
+def get_a_sale(sale_id):
+    '''
+    This function gets a specific sale by its id.
+    '''
+    if len(Sale) == 0:
+            return jsonify({'error': 'There are no sales made yet'}), 404
+    for Sales in Sale:
+        if Sales['sale_id'] == id:
+            return jsonify({'result': Sale}), 200
+    return jsonify({'error': 'Please make more sales'}), 404
+
+
+@sm.route('/api/v1/admin/sales', methods=['GET'])
 def get_all_sales():
     '''
      Function to enable an admin get all sales records.

@@ -23,6 +23,16 @@ class Products:
         }
 
     def get_products(self):
+        return [
+         {
+            'productID': str(self.product_id.int)[:5],
+            'productName': self.product_name,
+            'productQuantity': self.product_quantity,
+            'productprice': self.product_price,
+            'dateAdded': self.added_date
+            }  
+        ]
+    
+    def delete_product(self, Prod):
         pass
 
-    
