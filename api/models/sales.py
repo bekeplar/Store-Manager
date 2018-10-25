@@ -36,7 +36,16 @@ class Sales:
             }
 
     def get_sales(self):
-        pass
+        return [
+         {
+            'saleID': str(self.sale_id.int)[:5],
+            'productName': self.product_name,
+            'productQuantity': self.product_quantity,
+            'productprice': self.product_price,
+            'dateAdded': self.added_date,
+            'customerName': self.customer_name
+            }   
+        ]
 
     def get_sale_by_id(self, id):
         pass

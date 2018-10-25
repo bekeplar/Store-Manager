@@ -2,7 +2,6 @@ from flask import jsonify, json, request,  url_for, abort
 from api import sm
 from .models.products import Products
 from .models.sales import Sales
-from .models.users import Users
 
 """
 These lists will store the Sales and Products.
@@ -10,12 +9,25 @@ These lists will store the Sales and Products.
 
 Prod = []
 Sale = []
-Users = []
+User = []
 
 
 @sm.route('/signup', methods=['GET'])
 def register_user():
     return jsonify({"Welcome": "Please contact admin"})
+
+
+@sm.route('/login', methods=['POST'])
+def user_login():
+    data = request.json
+
+    username = data['username']
+    password = data['password']
+
+    if not username or not password:
+        abort(400)
+
+        return jsonify({"Success": "User Logged in successfuly"}), 200
 
 
 @sm.route('/', methods=['GET'])
@@ -35,8 +47,8 @@ def add_product():
     product_quantity = data['product_quantity']
     if not request.content_type == 'application/json':
         return jsonify({'error': 'unsupported content-type'}), 400
-    if (' ' in product_name) == True:
-            return jsonify({'error': 'Input'}), 400
+    if ("" in product_name) == True:
+            return jsonify({'error': 'enter product name'})
     product = Products(product_name, product_price, product_quantity)
     Prod.append(product.add_product())
     return jsonify({'msge': 'success'}), 201
@@ -48,7 +60,7 @@ def get_all_products():
     This function returns a list of all products in the store.
     '''
     if len(Prod) == 0:
-        return jsonify({'error': 'Store is out of stock'}),404
+        return jsonify({'error': 'Store is out of stock'}), 404
     return jsonify({'Stock Available': Prod}), 200
     """
     Endpoint for adding a sale to the store/Attendant.

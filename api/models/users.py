@@ -21,6 +21,5 @@ class Attendant(Users):
         self.users_id = user_id
         self.username = Admin
         self.password = 'Admin123'
-    '''
-    Admin credentials to access , add and update resources.
-    '''
+
+   
