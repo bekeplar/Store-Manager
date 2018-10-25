@@ -48,25 +48,6 @@ class SalesTestCase(TestCase):
     def setUp(self):
         self.testclient = sm.test_client()
 
-    def test_add_sale(self):
- 
-        sale = {
-            "customer_name": "bekeplar",
-            "product_price": "200.00",
-            "product_quantity": 6,
-        }
-
-        result = self.testclient.post('/api/v1/sales',
-                                  content_type='application/json',
-                                  data=json.dumps(sale)
-                                  )
-
-        self.assertEqual(result.status_code, 404)
-        self.assertIsNotNone(result)    
-
-    def test_get_all_sales_records(self):
-        response = self.testclient.get('/api/v1/sales/')
-        self.assertIn(b'The store is short of stock', response.data)
    
     def tearDown(self):
         self.testclient = sm.test_client()
