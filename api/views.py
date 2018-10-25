@@ -1,7 +1,8 @@
-from flask import jsonify, json, request,  url_for
+from flask import jsonify, json, request,  url_for, abort
 from api import sm
 from .models.products import Products
 from .models.sales import Sales
+from .models.users import Users
 
 """
 These lists will store the Sales and Products.
@@ -9,9 +10,21 @@ These lists will store the Sales and Products.
 
 Prod = []
 Sale = []
-"""
-Endpoint for adding a product to the store.
-"""
+Users = []
+
+
+@sm.route('/signup', methods=['GET'])
+def register_user():
+    return jsonify({"Welcome": "Please contact admin"})
+
+
+@sm.route('/', methods=['GET'])
+def home():
+    return jsonify({"Welcome": "Welcome to my Store"})
+
+    """
+    Endpoint for adding a product to the store.
+    """
 
 
 @sm.route('/api/v1/products', methods=['POST'])
@@ -20,12 +33,13 @@ def add_product():
     product_name = data['product_name']
     product_price = data['product_price']
     product_quantity = data['product_quantity']
+    if not request.content_type == 'application/json':
+        return jsonify({'error': 'unsupported content-type'}), 400
+    if (' ' in product_name) == True:
+            return jsonify({'error': 'Input'}), 400
     product = Products(product_name, product_price, product_quantity)
     Prod.append(product.add_product())
     return jsonify({'msge': 'success'}), 201
-"""
-Endpoint for accessing a product from the store,
-"""
 
 
 @sm.route('/api/v1/products', methods=['GET'])
@@ -33,12 +47,12 @@ def get_all_products():
     '''
     This function returns a list of all products in the store.
     '''
-    return jsonify({
-        'products': Prod}), 200
-
-"""
-Endpoint for adding a sale to the store/Attendant.
-"""
+    if len(Prod) == 0:
+        return jsonify({'error': 'Store is out of stock'}),404
+    return jsonify({'Stock Available': Prod}), 200
+    """
+    Endpoint for adding a sale to the store/Attendant.
+    """
 
 
 @sm.route('/api/v1/sales', methods=['POST'])
@@ -52,23 +66,33 @@ def add_sale():
     customer_name = data['customer_name']
     product_price = data['product_price']
     product_quantity = data['product_quantity']
+    if not request.content_type == 'application/json': 
+        return jsonify({'error': 'Wrong content-type'}), 400
+    if len(Sale) == 0:
+        return jsonify({'error': 'No sales made yet'}), 404
     sales = Sales(product_name, product_price, product_quantity, customer_name)
     Sale.append(sales.add_Sale())
-    return jsonify({'msge': 'success'}), 201
+    return jsonify({'msg': 'business progressing'}), 201
 
 
-@sm.route('/api/v1/products/product_id', methods=['GET'])
+@sm.route('/api/v1/products/<product_id>', methods=['GET'])
 def get_a_specific_product(id):
     '''
     This function gets a specific item by its id.
     '''
-    return jsonify({'product': get_a_specific_product(id)}), 200
+    if len(Products) == 0:
+            return jsonify({'error': 'The store is short of stock'}), 404 
+    for product_item in Prod:
+        if product_item['product_id'] == id:
+            return jsonify({'result': Prod}), 200
+    return jsonify({'error': 'Product not in stock'}), 404
 
 
-@sm.route('/api/v1/admin/sales', methods=['GET'])
+@sm.route('/api/v1/sales', methods=['GET'])
 def get_all_sales():
     '''
      Function to enable an admin get all sales records.
     '''
-    return jsonify({'Sales': Sales, 'msg': 'he'}), 200
-
+    if len(Products) == 0:
+            return jsonify({'error': 'The store is short of stock'}), 404
+    return jsonify({'Sales': Sales, 'msg': 'You own it'}), 200

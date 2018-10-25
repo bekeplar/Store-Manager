@@ -10,7 +10,7 @@ install:
 
 #  command to run tests
 script:
-  - nosetests --withcoverage --cover-tests
+  - py.test --cov=tests/
   - coverage report
 
 after_success:

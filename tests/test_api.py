@@ -60,12 +60,16 @@ class ProductsTestCase(TestCase):
         Testing for invalid and missing inputs.
         """
 
+    def test_get_all_products(self):
+        result = self.testclient.get('/api/v1/products')
+        self.assertEqual(result.status_code, 200)    
+
     def test_add_product_invalid_input(self):
         response = self.testclient.post(
             '/api/v1/products',
             content_type="application/json",
             data=json.dumps(Invalid_input))
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 400)
         self.assertIn("Server Error, Check product input", response.data)
 
     def test_add_product_Missing_input(self):
@@ -73,7 +77,7 @@ class ProductsTestCase(TestCase):
             '/api/v1/products',
             content_type="application/json",
             data=json.dumps(Missing_name))
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 400)
         self.assertIn("Server Error, Check product input", response.data)
 
     def test_add_product_with_no_quantity(self):
@@ -81,19 +85,11 @@ class ProductsTestCase(TestCase):
             '/api/v1/products',
             content_type="application/json",
             data=json.dumps(No_quantity))
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 400)
         self.assertIn("Server Error, Check Quantity input", response.data)   
 
-    def test_get_all_products(self):
-        result = self.testclient.get('/api/v1/products')
-        self.assertEqual(result.status_code, 200)
-
-        """
-        Testing for accessing a specific product.
-        """
-
     def test_get_a_specific_product(self):
-        result = self.testclient.get('/api/v1/products/product_id')
+        result = self.testclient.get('/api/v1/products/<product_id>')
         self.assertEqual(result.status_code, 200)
 
     def tearDown(self):
@@ -101,6 +97,4 @@ class ProductsTestCase(TestCase):
         """
         Deleting our test samples after testing is done
         """
-
-
 

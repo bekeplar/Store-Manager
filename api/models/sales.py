@@ -36,8 +36,7 @@ class Sales:
             }
 
     def get_sales(self):
-        if len(Sales) > 0:
-            return Sales
+        pass
 
     def get_sale_by_id(self, id):
         pass
