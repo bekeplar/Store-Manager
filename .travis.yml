@@ -10,7 +10,7 @@ install:
 
 #  command to run tests
 script:
-  - py.test --cov=tests/
+  - pytest --cov=api tests/
   - coverage report
 
 after_success:

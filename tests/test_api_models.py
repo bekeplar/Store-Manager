@@ -19,5 +19,5 @@ class Test_api_models(TestCase):
         pass
 
     def test_sale_object_returns_data_in_json_format(self):
-                pass
+        pass
 

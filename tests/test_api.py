@@ -54,10 +54,48 @@ class ProductsTestCase(TestCase):
         response = self.testclient.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Welcome to my Store', response.data)
+
+    def test_add_single_product(self):
+        product = {
+            "product_name": "Boots",
+            "product_price": "8000.00",
+            "product_quantity": 6,
+        }
+
+        result = self.testclient.post('/api/v1/products', content_type='application/json',
+                                  data=json.dumps(product))
+
+    def test_get_all_products(self):
+        response = self.testclient.get('/api/v1/products')
+        self.assertIn(b'Store is out of stock', response.data)
+
+
+class SalesTestCase(TestCase):
+    def setUp(self):
+        self.testclient = sm.test_client()
+
+    def test_add_sale(self):
+ 
+        sale = {
+            "customer_name": "bekeplar",
+            "product_price": "200.00",
+            "product_quantity": 6,
+        }
+
+        result = self.testclient.post('/api/v2/resources/order/',
+                                  content_type='application/json',
+                                  data=json.dumps(sale)
+                                  )
+
+        self.assertEqual(result.status_code, 404)
+        self.assertIsNotNone(result)    
+
+    def test_get_all_sales_records(self):
+        response = self.testclient.get('/api/v1/sales/')
+        self.assertIn(b'The store is short of stock', response.data)
    
     def tearDown(self):
         self.testclient = sm.test_client()
         """
         Deleting our test samples after testing is done
         """
-
