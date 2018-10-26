@@ -44,7 +44,7 @@ class Sales:
             'productprice': self.product_price,
             'dateAdded': self.added_date,
             'customerName': self.customer_name
-            }   
+            }
         ]
 
     def get_sale_by_id(self, id):

@@ -38,6 +38,7 @@ def home():
     Endpoint for adding a product to the store.
   """
 
+
 @sm.route('/api/v1/products', methods=['POST'])
 def add_product():
     data = json.loads(request.data)
