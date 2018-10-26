@@ -12,12 +12,12 @@ Sale = []
 User = []
 
 
-@sm.route('/signup', methods=['GET'])
+@sm.route('/signup', methods=['POST'])
 def register_user():
     return jsonify({"Welcome": "Please contact admin"})
 
 
-@sm.route('/login', methods=['GET'])
+@sm.route('/login', methods=['POST'])
 def user_login():
     data = request.json
 
@@ -36,9 +36,7 @@ def home():
 
     """
     Endpoint for adding a product to the store.
-    """
-
-
+  """
 
 @sm.route('/api/v1/products', methods=['POST'])
 def add_product():
@@ -48,8 +46,6 @@ def add_product():
     product_quantity = data['product_quantity']
     if not request.content_type == 'application/json':
         return jsonify({'error': 'unsupported content-type'}), 400
-    if ("" in product_name):
-            return jsonify({'error': 'enter product name'})
     product = Products(product_name, product_price, product_quantity)
     Prod.append(product.add_product())
     return jsonify({'msge': 'success'}), 201
@@ -134,3 +130,4 @@ def get_all_sales():
     if len(Products) == 0:
             return jsonify({'error': 'The store is short of stock'}), 404
     return jsonify({'Sales': Sales, 'msg': 'You own it'}), 200
+    #https://kepler-store.herokuapp.com/api/v1/products
