@@ -15,8 +15,9 @@ class BaseTestCase(unittest.TestCase):
         self.api = sm.test_client(self)
 
     def test_post(self):
-        res = self.api.post('/api/v1/products', content_type="application/json", data=json.dumps({"product_name": "boots", "product_price": 1000, "product_quantity": 2}))
-        self.assertEqual(res.status_code, 200)
+        with self.api as client:
+            res = client.post('/api/v1/products', json=dict(product_name="boots", product_price=1000, product_quantity=2))
+            self.assertEqual(res.status_code, 201)
 
 
 class ProductsTestCase(TestCase):
@@ -29,19 +30,19 @@ class ProductsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Welcome to my Store', response.data)
 
-    def test_add_single_product(self):
+    def test_add_product(self):
         product = {
             "product_name": "Boots",
             "product_price": "8000.00",
-            "product_quantity": 6,
+            "product_quantity": 6
         }
 
-        result = self.testclient.post('/api/v1/products', content_type='application/json',
-                                  data=json.dumps(product))
+        result = self.testclient.post('/api/v1/products', content_type='application/json', data=json.dumps(product))
+        self.assertEqual(result.status_code, 201)                      
 
     def test_get_all_products(self):
         response = self.testclient.get('/api/v1/products')
-        self.assertIn(b'Store is out of stock', response.data)
+        self.assertIn(b'Stock Available', response.data)
 
 
 class SalesTestCase(TestCase):

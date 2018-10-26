@@ -12,7 +12,7 @@ Sale = []
 User = []
 
 
-@sm.route('/signup', methods=['POST'])
+@sm.route('/signup', methods=['GET'])
 def register_user():
     return jsonify({"Welcome": "Please contact admin"})
 
@@ -30,7 +30,7 @@ def user_login():
         return jsonify({"Success": "User Logged in successfuly"}), 200
 
 
-@sm.route('/index', methods=['GET'])
+@sm.route('/', methods=['GET'])
 def home():
     return jsonify({"Welcome": "Welcome to my Store"})
 
@@ -78,7 +78,8 @@ def get_products():
     '''
     if len(Prod) == 0:
         return jsonify({'error': 'Store is out of stock'}), 404
-    return jsonify({'Stock Available': Prod}), 200
+    else:
+        return jsonify({'Stock Available': Prod}), 200
 
     """
     Endpoint for adding a sale to the store/Attendant.
@@ -102,9 +103,9 @@ def get_a_specific_product(product_id):
     This function gets a specific item by its id.
     '''
     if len(Prod) == 0:
-            return jsonify({'error': 'The store is short of stock'}), 404
+        return jsonify({'error': 'The store is short of stock'}), 404
     for product in Prod:
-        if product['product_id'] == id:
+        if product['product_id'] == product_id:
             return jsonify({'result': Prod}), 200
     return jsonify({'error': 'Product not in stock'}), 404
 
@@ -127,7 +128,7 @@ def get_all_sales():
     '''
      Function to enable an admin get all sales records.
     '''
-    if len(Products) == 0:
+    if len(Sale) == 0:
             return jsonify({'error': 'The store is short of stock'}), 404
     return jsonify({'Sales': Sales, 'msg': 'You own it'}), 200
     #https://kepler-store.herokuapp.com/api/v1/products
