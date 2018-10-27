@@ -2,6 +2,7 @@ from flask import jsonify, json, request,  url_for, abort
 from api import sm
 from .models.products import Products
 from .models.sales import Sales
+from .models.User import User
 
 """
 These lists will store the Sales and Products.
@@ -132,4 +133,4 @@ def get_all_sales():
     if len(Sale) == 0:
             return jsonify({'error': 'The store is short of stock'}), 404
     return jsonify({'Sales': Sales, 'msg': 'You own it'}), 200
-    #https://kepler-store.herokuapp.com/api/v1/products
+

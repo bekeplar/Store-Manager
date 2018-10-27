@@ -2,8 +2,9 @@ import unittest
 from unittest import TestCase
 from api import sm
 from api import views
-from api.models.products import Products
 from api.models.sales import Sales
+from api.models.products import Products
+from api.models.validation import empty_field
 import json
 
 
@@ -46,8 +47,13 @@ class ProductsTestCase(TestCase):
 
 
 class SalesTestCase(TestCase):
+
     def setUp(self):
         self.testclient = sm.test_client()
+
+    def test_get_all_sales(self):
+        response = self.testclient.get('/sales')
+        self.assertIn(b'You own it', response.data)
 
     def tearDown(self):
         self.testclient = sm.test_client()
