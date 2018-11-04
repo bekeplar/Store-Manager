@@ -1,8 +1,8 @@
 from flask import jsonify, json, request,  url_for, abort
 from api import sm
-from .models.products import Products
+from .models.product import Products
 from .models.sales import Sales
-from .models.User import User
+from .models.users import Users
 
 """
 These lists will store the Sales and Products.
@@ -66,8 +66,6 @@ def add_sale():
     product_quantity = data['product_quantity']
     if not request.content_type == 'application/json':
         return jsonify({'error': 'Wrong content-type'}), 400
-    if len(Sale) == 0:
-        return jsonify({'error': 'No sales made yet'}), 404
     sales = Sales(product_name, product_price, product_quantity, customer_name)
     Sale.append(sales.add_Sale())
     return jsonify({'msg': 'business progressing'}), 201
@@ -131,6 +129,5 @@ def get_all_sales():
      Function to enable an admin get all sales records.
     '''
     if len(Sale) == 0:
-            return jsonify({'error': 'The store is short of stock'}), 404
+            return jsonify({'error': 'The store has not sold yet'}), 404
     return jsonify({'Sales': Sales, 'msg': 'You own it'}), 200
-

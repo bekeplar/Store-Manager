@@ -3,7 +3,7 @@ from unittest import TestCase
 from api import sm
 from api import views
 from api.models.sales import Sales
-from api.models.products import Products
+from api.models.product import Products
 from api.models.validation import empty_field
 import json
 
@@ -52,8 +52,20 @@ class SalesTestCase(TestCase):
         self.testclient = sm.test_client()
 
     def test_get_all_sales(self):
-        response = self.testclient.get('/sales')
-        self.assertIn(b'You own it', response.data)
+        response = self.testclient.get('/api/v1/admin/sales')
+        self.assertIn(b'The store has not sold yet', response.data)
+
+    def test_add_sale(self):
+        sale = {
+            "product_name": "Boots",
+            "product_quantity": 2,
+            "product_price": "8000.00",
+            "customer_name": "bekeplar"
+
+        }
+
+        result = self.testclient.post('/api/v1/sales', content_type='application/json', data=json.dumps(sale))
+        self.assertEqual(result.status_code, 201)                      
 
     def tearDown(self):
         self.testclient = sm.test_client()

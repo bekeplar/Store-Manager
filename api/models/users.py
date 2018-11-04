@@ -1,4 +1,4 @@
-from api.models.validation import is_empty
+from api.models.validation import empty_field
 
 
 class Users:
@@ -51,7 +51,7 @@ class ValidateUserInput:
 
         return {
             "errors": errors,
-            "is_true": is_empty(errors)
+            "is_true": empty_field(self, errors)
         }
 
     def validate_login_input(self, request_data):
@@ -71,5 +71,5 @@ class ValidateUserInput:
 
         return {
             "errors": errors,
-            "is_true": is_empty(errors)
+            "is_true": empty_field(self, errors)
         }   
