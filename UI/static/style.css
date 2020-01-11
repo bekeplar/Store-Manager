@@ -1,0 +1,210 @@
+h1{
+    text-align: center;
+    color:red;
+    font-style: italic;
+    font-weight: bold;
+}
+a {
+    background-color: transparent;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2em;
+    display: inline-block;
+} 
+body{
+    background-image: url('img/store2.jpg');
+    background-size: cover;
+    width: 100%;
+    filter:opacity(0.8);
+    filter: blur(0.5);
+    height: 100%;
+    position: relative;
+ }
+ /*Styling links*/
+ li {
+     float: left;
+ }
+
+ ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+     background-color: rgb(105, 235, 19);
+ }
+ li a {
+     display: block;
+     color: #e20c0c;
+     text-align: center;
+     padding: 14px 16px;
+ }
+ li a:hover{
+     background-color: #4a1dee;
+ }
+/*Adding style to the Tables*/
+ table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    border-spacing: 6px;
+    border-top-style: solid;
+    text-align: center;
+    background-color: rgb(70, 31, 179);
+    opacity: .9;
+    font-family: sans-serif;
+    font-weight: 500;
+    width: 100%;
+    height: 50%;
+    overflow-x: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', Arial, Helvetica;
+} 
+th {
+    background-color: #4caf50;
+    color: rgb(241, 245, 18);
+    height : 50px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+tr: :nth-child(even) {
+color: #ddd;
+border: 1px solid black;
+}
+tr:hover{
+    background-color: #e21919;
+}
+ .login-form{
+    padding: 21px;
+ }
+ .input input{
+     width:100%;
+     outline: none;
+     border:none;
+     padding: 8px;
+     background-color: #fff;
+     border-bottom: 1px solid #fafcfb ;
+     margin-bottom: 4px;
+     border-radius: 1em;
+     text-decoration-color: #0d47a1;
+ }
+ input:hover{
+     background-color: #4caf50;
+ }
+
+ .login-box{
+    color : white;
+    background-color:none;
+    width:40%;
+    height: 50%;
+    margin:0 auto;
+    margin-top: 122px;
+    padding: 76px 15px;
+    opacity: 1;
+    text-decoration-color: #2ab9a6;
+    text-decoration: #4a1dee;
+    font: 1.2em sans-serif; 
+    font-weight: bold;
+    text-shadow: 2px 2px 9px #111;
+    
+}
+.new-box{
+    color : rgb(25, 209, 34);
+    background-color:none;
+    width:40%;
+    height: 50%;
+    margin:0 auto;
+    margin-top: 122px;
+    padding: 76px 15px;
+    opacity: .9;
+    text-decoration-color: #2ab9a6;
+    text-decoration: #4a1dee;
+    font: 1.2em sans-serif; 
+    font-weight: bold;
+    text-shadow: 2px 2px 9px #111;
+    
+}
+
+.input input:focus{
+    border-bottom: 1px solid #781dee;
+}
+
+label{
+    padding: 9px;
+    font-size: 1.5em;
+}
+.login-btn{
+    background: hsl(205, 40%, 64%);
+    border:none;
+    width:125px;
+    height:54px;
+    background: #0d47a1 ;
+    color:#e3f2fd;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.login-btn:hover{
+    transition-delay:  .5s;
+    background: rgb(241, 17, 17);
+    color:#0d47a1;
+}
+#login{
+    text-align: center;
+    font-family: sans-serif;
+    color: #0d47a1;
+}
+
+/* Responsive properties*/
+@media(max-width:480px){
+    .login-box{
+        height:100vh;
+        padding: 0;
+        width:100vw;
+        margin: 0;
+    }
+     #app{
+        padding-top: 55px;
+        color:rgb(230, 150, 30);
+        font-style: inherit;
+        font-weight: 900;
+        text-shadow: #2ab9a6;
+    }
+    
+
+@media(max-width:680px){
+    .login-box{
+        height:100vh;
+        padding: 0;
+        width:100vw;
+        margin: 0;
+}
+
+.user{
+    background: rgb(226, 140, 69) ;
+    color: #d5e6f1;
+    width:40%;
+    margin:0 auto;
+    margin-top: 124px;
+    padding: 54px 12px;
+    opacity: 0.7;
+    text-decoration-color: #2ab9a6;
+    text-decoration: #781dee
+}
+.new-box button {
+color: #781dee;    
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: 1px solid green;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+}   
+
+.login-box footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
