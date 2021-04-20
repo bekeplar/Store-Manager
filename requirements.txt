@@ -19,7 +19,7 @@ more-itertools==4.3.0
 pbr==4.2.0
 pep8==1.7.1
 pluggy==0.8.0
-py==1.7.0
+py==1.10.0
 pylint==2.1.1
 pytest==3.9.1
 pytz==2018.5
